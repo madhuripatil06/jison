@@ -3,17 +3,19 @@
 %%
 \s+         	{/* skip whitespace */}
 [0-9]+      	{return 'NUMBER';}
-"+"         	{return 'plus';}
-"-"         	{return 'minus';}
 "*"         	{return 'times';}
+"-"         	{return 'minus';}
+"+"         	{return 'plus';}
+"/"         	{return 'by';}
 <<EOF>>         {return 'EOF';}
 
 /lex
 
 
-%left 'times'
 %left 'plus'
 %left 'minus'
+%left 'times'
+%left 'by'
 
 %%
 E
@@ -30,6 +32,10 @@ E
     | E times NUMBER 
 	    {
 		    $$ = ["(",$1,'times', words($3).trim(), ")"].join(" ") ;
+	    }
+    | E by NUMBER 
+	    {
+		    $$ = ["(",$1,'by', words($3).trim(), ")"].join(" ") ;
 	    }
     | NUMBER  
     	{

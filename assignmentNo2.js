@@ -72,12 +72,12 @@
   }
 */
 var assignmentNo2 = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4,5,7,8];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4,5,7,8,9];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"E":3,"EOF":4,"plus":5,"NUMBER":6,"minus":7,"times":8,"$accept":0,"$end":1},
-terminals_: {2:"error",4:"EOF",5:"plus",6:"NUMBER",7:"minus",8:"times"},
-productions_: [0,[3,2],[3,3],[3,3],[3,3],[3,1]],
+symbols_: {"error":2,"E":3,"EOF":4,"plus":5,"NUMBER":6,"minus":7,"times":8,"by":9,"$accept":0,"$end":1},
+terminals_: {2:"error",4:"EOF",5:"plus",6:"NUMBER",7:"minus",8:"times",9:"by"},
+productions_: [0,[3,2],[3,3],[3,3],[3,3],[3,3],[3,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -103,13 +103,18 @@ case 4:
 break;
 case 5:
 
+		    this.$ = ["(",$$[$0-2],'by', words($$[$0]).trim(), ")"].join(" ") ;
+	    
+break;
+case 6:
+
 		    words = require("./numberToWords.js");
 		    this.$ = words($$[$0]).trim();
 		
 break;
 }
 },
-table: [{3:1,6:[1,2]},{1:[3],4:[1,3],5:[1,4],7:[1,5],8:[1,6]},o($V0,[2,5]),o($V0,[2,1]),{6:[1,7]},{6:[1,8]},{6:[1,9]},o($V0,[2,2]),o($V0,[2,3]),o($V0,[2,4])],
+table: [{3:1,6:[1,2]},{1:[3],4:[1,3],5:[1,4],7:[1,5],8:[1,6],9:[1,7]},o($V0,[2,6]),o($V0,[2,1]),{6:[1,8]},{6:[1,9]},{6:[1,10]},{6:[1,11]},o($V0,[2,2]),o($V0,[2,3]),o($V0,[2,4]),o($V0,[2,5])],
 defaultActions: {},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
@@ -593,18 +598,20 @@ case 0:/* skip whitespace */
 break;
 case 1:return 6;
 break;
-case 2:return 5;
+case 2:return 8;
 break;
 case 3:return 7;
 break;
-case 4:return 8;
+case 4:return 5;
 break;
-case 5:return 4;
+case 5:return 9;
+break;
+case 6:return 4;
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:\+)/,/^(?:-)/,/^(?:\*)/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:\*)/,/^(?:-)/,/^(?:\+)/,/^(?:\/)/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6],"inclusive":true}}
 });
 return lexer;
 })();
