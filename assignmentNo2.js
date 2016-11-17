@@ -71,13 +71,13 @@
     recoverable: (boolean: TRUE when the parser has a error recovery rule available for this particular error)
   }
 */
-var assignmentNo1 = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4,5];
+var assignmentNo2 = (function(){
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,4,5,7,8];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"E":3,"EOF":4,"OPERATOR":5,"NUMBER":6,"$accept":0,"$end":1},
-terminals_: {2:"error",4:"EOF",5:"OPERATOR",6:"NUMBER"},
-productions_: [0,[3,2],[3,3],[3,1]],
+symbols_: {"error":2,"E":3,"EOF":4,"plus":5,"NUMBER":6,"minus":7,"times":8,"$accept":0,"$end":1},
+terminals_: {2:"error",4:"EOF",5:"plus",6:"NUMBER",7:"minus",8:"times"},
+productions_: [0,[3,2],[3,3],[3,3],[3,3],[3,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -87,11 +87,29 @@ case 1:
  console.log(this.$);
 break;
 case 2:
-this.$ = ["(", $$[$0-2], $$[$0-1], $$[$0], ")"].join("")
+
+		    this.$ = ["(",$$[$0-2],'plus', words($$[$0]).trim(), ")"].join(" ") ;
+		
+break;
+case 3:
+
+		    this.$ = ["(",$$[$0-2],'minus', words($$[$0]).trim(), ")"].join(" ") ;
+	    
+break;
+case 4:
+
+		    this.$ = ["(",$$[$0-2],'times', words($$[$0]).trim(), ")"].join(" ") ;
+	    
+break;
+case 5:
+
+		    words = require("./numberToWords.js");
+		    this.$ = words($$[$0]).trim();
+		
 break;
 }
 },
-table: [{3:1,6:[1,2]},{1:[3],4:[1,3],5:[1,4]},o($V0,[2,3]),o($V0,[2,1]),{6:[1,5]},o($V0,[2,2])],
+table: [{3:1,6:[1,2]},{1:[3],4:[1,3],5:[1,4],7:[1,5],8:[1,6]},o($V0,[2,5]),o($V0,[2,1]),{6:[1,7]},{6:[1,8]},{6:[1,9]},o($V0,[2,2]),o($V0,[2,3]),o($V0,[2,4])],
 defaultActions: {},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
@@ -575,22 +593,18 @@ case 0:/* skip whitespace */
 break;
 case 1:return 6;
 break;
-case 2:return 'OPEN';
+case 2:return 5;
 break;
-case 3:return 5;
+case 3:return 7;
 break;
-case 4:return 5;
+case 4:return 8;
 break;
-case 5:return 5;
-break;
-case 6:return 5;
-break;
-case 7:return 4;
+case 5:return 4;
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:\()/,/^(?:\+)/,/^(?:-)/,/^(?:\*)/,/^(?:\/)/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:\+)/,/^(?:-)/,/^(?:\*)/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5],"inclusive":true}}
 });
 return lexer;
 })();
@@ -604,9 +618,9 @@ return new Parser;
 
 
 if (typeof require !== 'undefined' && typeof exports !== 'undefined') {
-exports.parser = assignmentNo1;
-exports.Parser = assignmentNo1.Parser;
-exports.parse = function () { return assignmentNo1.parse.apply(assignmentNo1, arguments); };
+exports.parser = assignmentNo2;
+exports.Parser = assignmentNo2.Parser;
+exports.parse = function () { return assignmentNo2.parse.apply(assignmentNo2, arguments); };
 exports.main = function commonjsMain(args) {
     if (!args[1]) {
         console.log('Usage: '+args[0]+' FILE');
