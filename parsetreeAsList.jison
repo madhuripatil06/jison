@@ -5,6 +5,8 @@
 [0-9]+      	{return 'NUMBER';}
 "+"         	{return 'OPERATOR';}
 "-"         	{return 'OPERATOR';}
+"*"         	{return 'OPERATOR';}
+"/"         	{return 'OPERATOR';}
 <<EOF>>         {return 'EOF';}
 
 /lex
