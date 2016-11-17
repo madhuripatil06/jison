@@ -1,13 +1,15 @@
+
+
 %lex
 
 %%
-\s+         	{/* skip whitespace */}
-[0-9]+      	{return 'NUMBER';}
-"*"         	{return 'times';}
-"-"         	{return 'minus';}
-"+"         	{return 'plus';}
-"/"         	{return 'by';}
-<<EOF>>         {return 'EOF';}
+\s+         	/* skip whitespace */
+[0-9]+      	return 'NUMBER'
+"-"         	return 'minus'
+"+"         	return 'plus'
+"*"         	return 'times'
+"/"         	return 'by'
+<<EOF>>         return 'EOF'
 
 /lex
 
@@ -18,22 +20,27 @@
 %left 'by'
 
 %%
-E
-	:E EOF{ console.log($$);}
 
-    | E plus NUMBER 
+expressions
+	: e EOF
+	{console.log($1)}
+	; 
+
+e
+
+    : e plus e 
     	{
-		    $$ = ["(",$1,'plus', words($3).trim(), ")"].join(" ") ;
+		    $$ = ["(",$1,'plus', $3, ")"].join(" ") ;
 		}
-    | E minus NUMBER 
+    | e minus e 
 	    {
-		    $$ = ["(",$1,'minus', words($3).trim(), ")"].join(" ") ;
+		    $$ = ["(",$1,'minus', $3, ")"].join(" ") ;
 	    }
-    | E times NUMBER 
+    | e times e 
 	    {
-		    $$ = ["(",$1,'times', words($3).trim(), ")"].join(" ") ;
+		    $$ = ["(",$1,'times', $3, ")"].join(" ") ;
 	    }
-    | E by NUMBER 
+    | e by e 
 	    {
 		    $$ = ["(",$1,'by', words($3).trim(), ")"].join(" ") ;
 	    }
