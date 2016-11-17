@@ -1,6 +1,6 @@
 var oneDigitNumber = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen","Fifteen", "Sixteen", "Seventeen","eighteen","Nineteen","Twenty" ];
 var t = ["", "Ten","Twenty","Thirty", "Fourty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety", "Twenty"];
-var positions = {"3":"Thousend", "6": "Million", "7": "Billion"};
+var positions = {"3":"Thousend", "6": "Million", "9": "Billion"};
 
 
  var parse2Digitnumber = function(number){
@@ -29,11 +29,12 @@ calculator["3"] = parse3DigitNumber;
 var splitBigNum = function(number){
 	var result = [];
 	var n = number.split("");
+	var copy = number.split("");
 	for(var i = 0 ; i < n.length/3 ; i++){
-		result.unshift(n.splice(-3));
+		result.unshift(copy.splice(-3));
 	};
-	if(n.length > 0)
-		result.unshift(n);
+	if(copy.length > 0)
+		result.unshift(copy);
 	return parseBigNum(result);
 }
 
