@@ -1,9 +1,8 @@
 var represent = function(input,result){
 	result.push("(");
 	input.forEach(function(item){
-		if(item instanceof Array){
+		if(item instanceof Array)
 			result = represent(item,result);
-		}
 		else
 			result.push(item)
 	});
