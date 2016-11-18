@@ -1,7 +1,4 @@
-
-
 %lex
-
 %%
 \s+         	/* skip whitespace */
 [0-9]+      	return 'NUMBER'
@@ -14,6 +11,10 @@
 /lex
 
 
+%{
+  words = require("./numberToWords.js");
+%}
+
 %left 'plus'
 %left 'minus'
 %left 'times'
@@ -23,11 +24,12 @@
 
 expressions
 	: e EOF
-	{console.log($1.join(" ").replace(",", ""))}
+	{
+		console.log($1);
+	}
 	; 
 
 e
-
     : e plus e 
     	{
 		    $$ = [$1,'plus', $3];
@@ -46,8 +48,7 @@ e
 	    }
     | NUMBER  
     	{
-		    words = require("./numberToWords.js");
-		    $$ = words($1);
+		    $$ = words($1).trim();
 		}
     ;
 
