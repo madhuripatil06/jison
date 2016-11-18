@@ -1,4 +1,4 @@
-var oneDigitNumber = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen","Fifteen", "Sixteen", "Seventeen","eighteen","Nineteen","Twenty" ];
+var oneDigitNumber = ["", "One", "Two", "Three", "Four", "Five", "Six", "Seven", "Eight", "Nine", "Ten", "Eleven", "Twelve", "Thirteen", "Fourteen","Fifteen", "Sixteen", "Seventeen","Eighteen","Nineteen","Twenty" ];
 var ten = ["", "Ten","Twenty","Thirty", "Fourty", "Fifty", "Sixty", "Seventy", "Eighty", "Ninety", "Twenty"];
 var positions = {3:"Thousend", 6: "Million", 9: "Billion"};
 
