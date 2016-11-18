@@ -12,11 +12,16 @@
 
 /lex
 
+%{
+	represent = require("./parenthesis.js");	
+%}
+
+
 %%
 E
-	:E EOF{ console.log($$);}
+	:E EOF{ console.log(represent($$));}
 
-    | E OPERATOR NUMBER {$$ = ["(", $1, $2, $3, ")"].join("")}
+    | E OPERATOR NUMBER {$$ = [$1, $2, $3]}
 
     | NUMBER ;
 
