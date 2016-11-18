@@ -11,3 +11,5 @@ var represent = function(input, result){
 	result += ")";
 	return result;
 };
+
+module.exports = represent;

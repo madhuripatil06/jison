@@ -13,6 +13,7 @@
 
 %{
   words = require("./numberToWords.js");
+  represent = require("./parenthesis.js");
 %}
 
 %left 'plus'
@@ -25,7 +26,7 @@
 expressions
 	: e EOF
 	{
-		console.log($1);
+		console.log(represent($1));
 	}
 	; 
 
