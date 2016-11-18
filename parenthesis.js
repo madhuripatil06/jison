@@ -9,7 +9,7 @@ var represent = function(input, result){
 			result += " "+input[i] + " "
 	}
 	result += ")";
-	return result;
+	return result.replace(/\s\s+/g, ' ');
 };
 
 module.exports = represent;
