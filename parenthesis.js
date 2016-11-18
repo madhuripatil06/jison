@@ -1,15 +1,18 @@
-var represent = function(input, result){
-	if(!result)
-		result = "";
-	result += "( ";
-	for(i = 0 ; i < input.length ; i++){
-		if(input[i] instanceof Array)
-			result += represent(input[i]);
+var represent = function(input,result){
+	result.push("(");
+	input.forEach(function(item){
+		if(item instanceof Array){
+			result = represent(item,result);
+		}
 		else
-			result += " "+input[i] + " "
-	}
-	result += " )";
-	return result.replace(/\s\s+/g, ' ');
+			result.push(item)
+	});
+	result.push(")");
+	return result;
 };
 
-module.exports = represent;
+var wrap  =function(number){
+	return represent(number, []).join(" ");
+}
+
+module.exports = wrap;
