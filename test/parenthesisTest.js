@@ -23,9 +23,5 @@ describe('parenthesis', function() {
 			console.log(library([1, [2], 4, [4,5,[8]]]));
 		  assert.equal("( 1 ( 2 ) 4 ( 4 5 ( 8 ) ) )", library([1, [2], 4, [4,5,[8]]]));
 		});
-
-		// it('should return ( 1 4 5 )  the value is [1,2,3] ', function() {
-		//   assert.equal("( 1 2 3 )", library([1,2,3]));
-		// });
 	});
 });
