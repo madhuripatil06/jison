@@ -13,7 +13,6 @@
 /lex
 
 %%
-
 E
 	:E EOF{ console.log($$);}
 
