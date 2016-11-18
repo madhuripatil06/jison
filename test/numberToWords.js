@@ -43,4 +43,14 @@ describe('Array', function() {
 	    });
 	});
 
+	 describe('number representation for big number', function() {
+	    it('should return One Hundred  Thousend when the value is 100000', function() {
+	      assert.equal("One Hundred  Thousend", library("100000"));
+	    });
+
+		it('should return One Million when the value is 1000000', function() {
+	      assert.equal("One Million", library("1000000"));
+	    });
+	});
+
 });
