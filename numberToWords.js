@@ -38,7 +38,7 @@ var splitBigNum = function(input){
 	};
 	if(copy.length)
 		result.unshift(copy.join(""));
-	return parseBigNum(result);
+	return parseBigNum(result).trim();
 }
 
 var isItZero = function(number){
