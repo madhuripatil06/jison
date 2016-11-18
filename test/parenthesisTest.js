@@ -1,4 +1,4 @@
-var library = require("../parenthesis.js");
+var library = require("../libraries/parenthesis.js");
 var assert = require('assert');
 
 describe('parenthesis', function() {

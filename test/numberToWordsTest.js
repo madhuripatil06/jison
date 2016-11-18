@@ -1,4 +1,4 @@
-var library = require("../numberToWords.js");
+var library = require("../libraries/numberToWords.js");
 var assert = require('assert');
 
 describe('number to words', function() {

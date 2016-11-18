@@ -13,7 +13,7 @@
 /lex
 
 %{
-	represent = require("./parenthesis.js");	
+	represent = require("../libraries/parenthesis.js");	
 %}
 
 

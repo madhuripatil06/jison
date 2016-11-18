@@ -12,8 +12,8 @@
 
 
 %{
-  words = require("./numberToWords.js");
-  represent = require("./parenthesis.js");
+  words = require("../libraries/numberToWords.js");
+  represent = require("../libraries/parenthesis.js");
 %}
 
 %left 'plus'
