@@ -84,32 +84,32 @@ performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* actio
 var $0 = $$.length - 1;
 switch (yystate) {
 case 1:
-console.log($$[$0-1])
+console.log($$[$0-1].join(" ").replace(",", ""))
 break;
 case 2:
 
-		    this.$ = ["(",$$[$0-2],'plus', $$[$0], ")"].join(" ") ;
+		    this.$ = ["(",$$[$0-2],'plus', $$[$0], ")"];
 		
 break;
 case 3:
 
-		    this.$ = ["(",$$[$0-2],'minus', $$[$0], ")"].join(" ") ;
+		    this.$ = ["(", $$[$0-2],'minus', $$[$0], ")"] ;
 	    
 break;
 case 4:
 
-		    this.$ = ["(",$$[$0-2],'times', $$[$0], ")"].join(" ") ;
+		    this.$ = ["(", $$[$0-2],'times', $$[$0], ")"] ;
 	    
 break;
 case 5:
 
-		    this.$ = ["(",$$[$0-2],'by', words($$[$0]).trim(), ")"].join(" ") ;
+		    this.$ = ["(", $$[$0-2],'by', $$[$0], ")"];
 	    
 break;
 case 6:
 
 		    words = require("./numberToWords.js");
-		    this.$ = words($$[$0]).trim();
+		    this.$ = words($$[$0]);
 		
 break;
 }

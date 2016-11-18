@@ -23,31 +23,31 @@
 
 expressions
 	: e EOF
-	{console.log($1)}
+	{console.log($1.join(" ").replace(",", ""))}
 	; 
 
 e
 
     : e plus e 
     	{
-		    $$ = ["(",$1,'plus', $3, ")"].join(" ") ;
+		    $$ = [$1,'plus', $3];
 		}
     | e minus e 
 	    {
-		    $$ = ["(",$1,'minus', $3, ")"].join(" ") ;
+		    $$ = [$1,'minus', $3] ;
 	    }
     | e times e 
 	    {
-		    $$ = ["(",$1,'times', $3, ")"].join(" ") ;
+		    $$ = [$1,'times', $3] ;
 	    }
     | e by e 
 	    {
-		    $$ = ["(",$1,'by', words($3).trim(), ")"].join(" ") ;
+		    $$ = [$1,'by', $3];
 	    }
     | NUMBER  
     	{
 		    words = require("./numberToWords.js");
-		    $$ = words($1).trim();
+		    $$ = words($1);
 		}
     ;
 
