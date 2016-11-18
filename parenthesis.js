@@ -8,7 +8,7 @@ var represent = function(input, result){
 		else
 			result += " "+input[i] + " "
 	}
-	result += ")";
+	result += " )";
 	return result.replace(/\s\s+/g, ' ');
 };
 
