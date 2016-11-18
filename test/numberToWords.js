@@ -24,12 +24,23 @@ describe('Array', function() {
 	      assert.equal("One Hundred", library("100"));
 	    });
 
-	    it('should return Two Hundred when the value is 200', function() {
-	      assert.equal("Two Hundred", library("200"));
+	    it('should return Two Hundred Thirty Seven when the value is 237', function() {
+	      assert.equal("Two Hundred Thirty Seven", library("237"));
 	    });
 
 	    it('should return Five Hundred One when the value is 501', function() {
 	      assert.equal("Five Hundred One", library("501"));
 	    });
 	});
+
+    describe('number representation for 4 digit number', function() {
+	    it('should return One Thousend when the value is 1000', function() {
+	      assert.equal("One Thousend", library("1000"));
+	    });
+
+	    it('should return One Thousend Four Hundred Fifty Six when the value is 1456', function() {
+	      assert.equal("One Thousend Four Hundred Fifty Six", library("1456"));
+	    });
+	});
+
 });
