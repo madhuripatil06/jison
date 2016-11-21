@@ -2,38 +2,42 @@
 
 %%
 \s+         	{/* skip whitespace */}
-[0-9]+      	{return 'NUMBER';}
-[a-zA-Z]+       {return 'var'} 
+[0-9]+      	{return 'NUMBER'}
+[a-zA-Z]+       {return 'varName'} 
 "="             { return 'identifier'}
 "+"             { return 'plus'}
+"*"             { return 'into'}
 ";"             { return 'end'}
-<<EOF>>         {return 'EOF';}
+<<EOF>>         {return 'EOF'}
 
 /lex
 
+%left 'plus'
+%left 'into'
+%left 'end'
+%left 'identifier'
 
 %%
 
-endFunction 
-	: e EOF
+expressions
+	: operations EOF
+	| operations end EOF
 	;
 
-
-operations
-	: operations end
-	| var plus NUMBER
-	| operations plus NUMBER
+assignment
+	: varName identifier NUMBER end
 	;
 
-
-assignment 
-	: var identifier NUMBER end
+operations 
+	: assignment 
+	| assignment e
 	;
 
-e
-	: assignment
-	| e operations
-	| e assignment
-    | NUMBER
-    ;
+e 
+	: e plus e
+	| e into e
+	| NUMBER
+	| varName
+	;
+
 
