@@ -72,12 +72,12 @@
   }
 */
 var assignmentNo3Right = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,5],$V1=[5,7];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[5,8],$V1=[1,10],$V2=[5,7,8,9];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"endFunction":3,"e":4,"EOF":5,"assignment":6,"var":7,"identifier":8,"NUMBER":9,"end":10,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",7:"var",8:"identifier",9:"NUMBER",10:"end"},
-productions_: [0,[3,2],[6,4],[4,1],[4,2],[4,1]],
+symbols_: {"error":2,"endFunction":3,"e":4,"EOF":5,"operations":6,"end":7,"var":8,"plus":9,"NUMBER":10,"assignment":11,"identifier":12,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"EOF",7:"end",8:"var",9:"plus",10:"NUMBER",12:"identifier"},
+productions_: [0,[3,2],[6,2],[6,3],[6,3],[11,4],[4,1],[4,2],[4,2],[4,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
@@ -85,7 +85,7 @@ var $0 = $$.length - 1;
 switch (yystate) {
 }
 },
-table: [{3:1,4:2,6:3,7:$V0,9:[1,4]},{1:[3]},{5:[1,6],6:7,7:$V0},o($V1,[2,3]),o($V1,[2,5]),{8:[1,8]},{1:[2,1]},o($V1,[2,4]),{9:[1,9]},{10:[1,10]},o($V1,[2,2])],
+table: [{3:1,4:2,8:[1,5],10:[1,4],11:3},{1:[3]},{5:[1,6],6:7,8:[1,9],11:8},o($V0,[2,6]),o($V0,[2,9]),{12:$V1},{1:[2,1]},o($V0,[2,7],{7:[1,11],9:[1,12]}),o($V0,[2,8]),{9:[1,13],12:$V1},{10:[1,14]},o($V2,[2,2]),{10:[1,15]},{10:[1,16]},{7:[1,17]},o($V2,[2,4]),o($V2,[2,3]),o($V0,[2,5])],
 defaultActions: {6:[2,1]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
@@ -567,20 +567,22 @@ var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
 case 0:/* skip whitespace */
 break;
-case 1:return 9;
+case 1:return 10;
 break;
-case 2:return 7
+case 2:return 8
 break;
-case 3: return 8
+case 3: return 12
 break;
-case 4: return 10
+case 4: return 9
 break;
-case 5:return 5;
+case 5: return 7
+break;
+case 6:return 5;
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:[a-zA-Z]+)/,/^(?:=)/,/^(?:;)/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:[a-zA-Z]+)/,/^(?:=)/,/^(?:\+)/,/^(?:;)/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6],"inclusive":true}}
 });
 return lexer;
 })();
