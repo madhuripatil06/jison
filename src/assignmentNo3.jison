@@ -6,29 +6,43 @@
 [0-9]+      	{return 'NUMBER';}
 [a-z]      		{return 'ALPHABET';}
 "="      		{return 'ASSIGNMENT';}
-"+"         	{return 'OPERATOR';}
+"*"         	{return 'times';}
+"+"         	{return 'plus';}
+"-"         	{return 'minus';}
 <<EOF>>         {return 'EOF';}
 
 /lex
+
+%left 'plus'
+%right 'times'
+%right 'ASSIGNMENT'
 
 %%
 
 
 
 expressions
-	: E EOF
-		{console.log($$)}
+	: e EOF
+		{console.log($1)}
 	; 
 
-E
+e
+	: e times NUMBER {$$ = (+$1) * (+$3);}
 
-    : E ALPHABET OPERATOR NUMBER END {$$ = (+$1)+(+$4)}
+    | e ALPHABET plus NUMBER {$$ = (+$1) + (+$4);}
 
-    | ALPHABET ASSIGNMENT NUMBER END {$$ = +$3}
+    | e plus NUMBER {$$ = (+$1) + (+$3) ;}
 
-    | E ALPHABET ASSIGNMENT NUMBER END
+    | e minus NUMBER {$$ = (+$1) - (+$3)}
 
-    | NUMBER {$$ = +$1}
+    | e ALPHABET minus NUMBER {$$ = (+$1) - (+$4)}
 
+    | e ALPHABET times NUMBER {$$ = (+$1) * (+$4)}
+
+    | ALPHABET ASSIGNMENT NUMBER END {console.log(+$3," assignment ",$3);$$ = +$3;}
+
+    | e ALPHABET ASSIGNMENT NUMBER END
+
+    | NUMBER
     ;
 
