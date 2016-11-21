@@ -2,7 +2,7 @@ var represent = function(input,result){
 	result.push("(");
 	input.forEach(function(item){
 		if(item instanceof Array)
-			result = represent(item,result);
+			result.concat(represent(item,[]));
 		else
 			result.push(item)
 	});
