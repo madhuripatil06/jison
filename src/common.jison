@@ -4,6 +4,7 @@
 \s+             {/* skip whitespace */}
 [0-9]+          { return 'number';}
 '+'             { return 'plus';}
+';'             { return 'end';}
 '*'             { return 'into';}
 <<EOF>>         { return 'EOF';}
 
@@ -11,6 +12,7 @@
 
 %left 'plus'
 %left 'into'
+%right 'into'
 
 %{  
     var path = require("path");
@@ -21,10 +23,11 @@
 %%
 
 expression 
-    :   e EOF {return $$;}
+    :  e end EOF {return $$}
+    |  e EOF {return $$;}
     ;
 
-e   
+e 
     : e plus e {
         operator = node.createOperatorNode($2);
         $$ = new Tree(operator, $1, $3);

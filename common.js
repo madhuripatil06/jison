@@ -72,33 +72,36 @@
   }
 */
 var common = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,3],$V1=[1,6],$V2=[5,6,7];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,3],$V1=[1,7],$V2=[5,6,7];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"expression":3,"e":4,"EOF":5,"plus":6,"into":7,"number":8,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"EOF",6:"plus",7:"into",8:"number"},
-productions_: [0,[3,2],[4,3],[4,3],[4,1]],
+symbols_: {"error":2,"expression":3,"e":4,"end":5,"EOF":6,"plus":7,"into":8,"number":9,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"end",6:"EOF",7:"plus",8:"into",9:"number"},
+productions_: [0,[3,3],[3,2],[4,3],[4,3],[4,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
 var $0 = $$.length - 1;
 switch (yystate) {
 case 1:
+return this.$
+break;
+case 2:
 return this.$;
 break;
-case 2: case 3:
+case 3: case 4:
 
         operator = node.createOperatorNode($$[$0-1]);
         this.$ = new Tree(operator, $$[$0-2], $$[$0]);
     
 break;
-case 4:
+case 5:
 this.$ = node.createNumberNode($$[$0]);
 break;
 }
 },
-table: [{3:1,4:2,8:$V0},{1:[3]},{5:[1,4],6:[1,5],7:$V1},o($V2,[2,4]),{1:[2,1]},{4:7,8:$V0},{4:8,8:$V0},o([5,6],[2,2],{7:$V1}),o($V2,[2,3])],
-defaultActions: {4:[2,1]},
+table: [{3:1,4:2,9:$V0},{1:[3]},{5:[1,4],6:[1,5],7:[1,6],8:$V1},o([5,6,7,8],[2,5]),{6:[1,8]},{1:[2,2]},{4:9,9:$V0},{4:10,9:$V0},{1:[2,1]},o($V2,[2,3],{8:$V1}),o($V2,[2,4],{8:$V1})],
+defaultActions: {5:[2,2],8:[2,1]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -583,18 +586,20 @@ var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
 case 0:/* skip whitespace */
 break;
-case 1: return 8;
+case 1: return 9;
 break;
-case 2: return 6;
+case 2: return 7;
 break;
-case 3: return 7;
+case 3: return 5;
 break;
-case 4: return 5;
+case 4: return 8;
+break;
+case 5: return 6;
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:\+)/,/^(?:\*)/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:\+)/,/^(?:;)/,/^(?:\*)/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5],"inclusive":true}}
 });
 return lexer;
 })();
