@@ -12,6 +12,11 @@
 
 /lex
 
+%{
+	var tree = require("./parseTree.js");
+
+%}
+
 %left 'plus'
 %left 'into'
 %left 'end'
@@ -34,7 +39,7 @@ operations
 	;
 
 e 
-	: e plus e
+	: e plus e 
 	| e into e
 	| NUMBER
 	| varName
