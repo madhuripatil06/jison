@@ -1,8 +1,9 @@
 var represent = function(input,result){
 	result.push("(");
 	input.forEach(function(item){
-		if(item instanceof Array)
-			result.concat(represent(item,[]));
+		if(item instanceof Array){
+			result = result.concat(represent(item,[]));
+		}
 		else
 			result.push(item)
 	});
@@ -10,8 +11,8 @@ var represent = function(input,result){
 	return result;
 };
 
-var wrap  =function(number){
-	return represent(number, []).join(" ");
+var wrap  =function(input){
+	return represent(input, []).join(" ");
 }
 
 module.exports = wrap;
