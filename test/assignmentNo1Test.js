@@ -2,7 +2,7 @@ var path = require("path");
 var representation = require(path.resolve("./src/representTree.js"));
 var assert = require('assert');
 
-describe.only('Assignment No. 1 tests', function() {
+describe('Assignment No. 1 tests', function() {
 	describe('represent function for tree', function() {
 		it('should return list representaion for tree for more complex tree', function() {
 			var result = representation("1+2+3");

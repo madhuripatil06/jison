@@ -1,7 +1,7 @@
 var node = {};
 
 var operations = {
-	'plus': function(leave1, leave2){
+	'+': function(leave1, leave2){
 		return leave1.evaluate() + leave2.evaluate()
 	},
 }
