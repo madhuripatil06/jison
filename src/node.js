@@ -17,7 +17,7 @@ node.createNumberNode = function(number){
 	}
 };
 
-node.createPlusNode = function(sign){
+node.createOperatorNode = function(sign){
 	return {
 		type : "Operator",
 		value : sign,
