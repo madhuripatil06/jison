@@ -2,7 +2,7 @@ var path = require("path");
 var representation = require(path.resolve("./src/assignmentNo2.js"));
 var assert = require('assert');
 
-describe.only('Assignment No. 2 tests', function() {
+describe('Assignment No. 2 tests', function() {
 	describe('represent tree in words', function() {
 		it('should return list representaion for tree for more complex tree', function() {
 			var result = representation("1+2");
@@ -18,7 +18,7 @@ describe.only('Assignment No. 2 tests', function() {
 			assert.equal("( Six plus ( One times Two ) )", result)
 		});
 
-		
+
 		it('should return list representaion for tree for more complex tree', function() {
 			var result = representation("1000000000+2");
 			assert.equal("( One Billion plus Two )", result)
