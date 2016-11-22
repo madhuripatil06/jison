@@ -17,6 +17,16 @@ node.createNumberNode = function(number){
 	}
 };
 
+node.createAssignNode = function(varName, node){
+	return {
+		type : "Assign",
+		value : node,
+		evaluate : function(){
+			return this.value.evaluate();
+		}
+	}	
+};
+
 node.createOperatorNode = function(sign){
 	return {
 		type : "Operator",
