@@ -1,4 +1,4 @@
-function PlusTree(parentNode, firstLeave, secondLeave){
+function Tree(parentNode, firstLeave, secondLeave){
 	this.parentNode = parentNode;
 	this.firstLeave = firstLeave;
 	this.secondLeave = secondLeave;
@@ -7,4 +7,4 @@ function PlusTree(parentNode, firstLeave, secondLeave){
 	};
 };
 
-module.exports = PlusTree;
+module.exports = Tree;

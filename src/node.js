@@ -1,4 +1,12 @@
 var node = {};
+
+var operations = {
+	'plus': function(leave1, leave2){
+		return leave1.evaluate() + leave2.evaluate()
+	},
+}
+
+
 node.createNumberNode = function(number){
 	return {
 		type : "NUMBER",
@@ -13,9 +21,7 @@ node.createPlusNode = function(sign){
 	return {
 		type : "Operator",
 		value : sign,
-		evaluate : function(leave1, leave2) {
-			return leave1.evaluate() + leave2.evaluate();
-		}
+		evaluate : operations[sign]
 	}
 };
 
