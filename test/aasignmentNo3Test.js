@@ -25,5 +25,11 @@ describe('Assignment No. 3 tests', function() {
 			var result = evaluator("x=1;y=7;x+y+9;");
 			assert.equal(17, result)
 		});
+
+
+		it('should return value for expression with power exp tree', function() {
+			var result = evaluator("x=1;y=7;x^y+9;");
+			assert.equal(10, result)
+		});
 	});
 });

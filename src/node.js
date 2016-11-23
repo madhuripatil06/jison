@@ -10,8 +10,14 @@ var operations = {
 	},
 	'*': function(leave1, leave2){
 		return leave1.evaluate() * leave2.evaluate();
+	},
+	'/': function(leave1, leave2){
+		return leave1.evaluate() / leave2.evaluate();
+	},
+	'-': function(leave1, leave2){
+		return leave1.evaluate() - leave2.evaluate();
 	}
-}
+};
 
 
 node.createNumberNode = function(number){

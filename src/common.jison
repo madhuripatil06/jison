@@ -4,18 +4,21 @@
 \s+             {/* skip whitespace */}
 [0-9]+          { return 'number';}
 '+'             { return 'plus';}
+'-'             { return 'minus';}
 ';'             { return 'end';}
 '='             { return 'assign';}
 '^'             { return 'power';}
 [a-zA-Z]+       { return 'string';}
 '*'             { return 'into';}
+'/'             { return 'by';}
 <<EOF>>         { return 'EOF';}
 
 /lex
 
 %left 'plus'
+%left 'minus'
 %left 'into'
-%right 'into'
+%left 'by'
 %right 'assign'
 %left 'power'
 
@@ -29,8 +32,8 @@
 %%
 
 expression 
-    :  final_result end EOF {console.log($$.evaluate());return $$;}
-    |  final_result EOF {console.log($$.evaluate());return $$;}
+    :  final_result end EOF {return $$;}
+    |  final_result EOF {return $$;}
     ;
 
 assignment 
@@ -61,6 +64,15 @@ e
         $$ = new Tree(operator, $1, $3);
     }
     | e power e {
+        operator = node.createOperatorNode($2);
+        $$ = new Tree(operator, $1, $3);
+    }
+    | e minus e {
+        operator = node.createOperatorNode($2);
+        $$ = new Tree(operator, $1, $3);
+    }
+
+    | e by e {
         operator = node.createOperatorNode($2);
         $$ = new Tree(operator, $1, $3);
     }
