@@ -72,45 +72,45 @@
   }
 */
 var common = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,6],$V1=[5,6],$V2=[1,11],$V3=[1,12],$V4=[5,6,12,13],$V5=[2,11],$V6=[1,18],$V7=[5,6,12],$V8=[5,6,8,10];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,6],$V1=[5,6],$V2=[1,11],$V3=[1,12],$V4=[1,13],$V5=[5,6,11,12,13],$V6=[2,12],$V7=[1,19],$V8=[5,6,11],$V9=[5,6,8,14];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"expression":3,"final_result":4,"end":5,"EOF":6,"assignment":7,"string":8,"assign":9,"number":10,"e":11,"plus":12,"into":13,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"end",6:"EOF",8:"string",9:"assign",10:"number",12:"plus",13:"into"},
-productions_: [0,[3,3],[3,2],[7,4],[7,5],[4,1],[4,3],[4,1],[11,3],[11,3],[11,1],[11,1]],
+symbols_: {"error":2,"expression":3,"final_result":4,"end":5,"EOF":6,"assignment":7,"string":8,"assign":9,"e":10,"plus":11,"into":12,"power":13,"number":14,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"end",6:"EOF",8:"string",9:"assign",11:"plus",12:"into",13:"power",14:"number"},
+productions_: [0,[3,3],[3,2],[7,4],[7,5],[4,1],[4,3],[4,1],[10,3],[10,3],[10,3],[10,1],[10,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
 var $0 = $$.length - 1;
 switch (yystate) {
 case 1: case 2:
-return this.$;
+console.log(this.$.evaluate());return this.$;
 break;
 case 3: case 4:
 
-        this.$ = node.createNumberNode($$[$0-1]);
-        memory.createVarNode($$[$0-3], this.$);
+        this.$ = $$[$0-1];
+        memory.createVarNode($$[$0-3], $$[$0-1]);
     
 break;
 case 6:
  this.$ = $$[$0-1];
 break;
-case 8: case 9:
+case 8: case 9: case 10:
 
         operator = node.createOperatorNode($$[$0-1]);
         this.$ = new Tree(operator, $$[$0-2], $$[$0]);
     
 break;
-case 10:
+case 11:
 this.$ = node.createNumberNode($$[$0]);
 break;
-case 11:
+case 12:
 this.$ = memory.getVarNode($$[$0]);
 break;
 }
 },
-table: [{3:1,4:2,7:3,8:[1,5],10:$V0,11:4},{1:[3]},{5:[1,7],6:[1,8]},o($V1,[2,5],{11:9,8:[1,10],10:$V0}),o($V1,[2,7],{12:$V2,13:$V3}),o($V4,$V5,{9:[1,13]}),o($V4,[2,10]),{6:[1,14]},{1:[2,2]},{5:[1,15],12:$V2,13:$V3},o([5,12,13],$V5,{9:[1,16]}),{8:$V6,10:$V0,11:17},{8:$V6,10:$V0,11:19},{10:[1,20]},{1:[2,1]},o($V1,[2,6]),{10:[1,21]},o($V7,[2,8],{13:$V3}),o($V4,$V5),o($V7,[2,9],{13:$V3}),{5:[1,22]},{5:[1,23]},o($V8,[2,3]),o($V8,[2,4])],
-defaultActions: {8:[2,2],14:[2,1]},
+table: [{3:1,4:2,7:3,8:[1,5],10:4,14:$V0},{1:[3]},{5:[1,7],6:[1,8]},o($V1,[2,5],{10:9,8:[1,10],14:$V0}),o($V1,[2,7],{11:$V2,12:$V3,13:$V4}),o($V5,$V6,{9:[1,14]}),o($V5,[2,11]),{6:[1,15]},{1:[2,2]},{5:[1,16],11:$V2,12:$V3,13:$V4},o([5,11,12,13],$V6,{9:[1,17]}),{8:$V7,10:18,14:$V0},{8:$V7,10:20,14:$V0},{8:$V7,10:21,14:$V0},{8:$V7,10:22,14:$V0},{1:[2,1]},o($V1,[2,6]),{8:$V7,10:23,14:$V0},o($V8,[2,8],{12:$V3,13:$V4}),o($V5,$V6),o($V8,[2,9],{12:$V3,13:$V4}),o($V5,[2,10]),{5:[1,24],11:$V2,12:$V3,13:$V4},{5:[1,25],11:$V2,12:$V3,13:$V4},o($V9,[2,3]),o($V9,[2,4])],
+defaultActions: {8:[2,2],15:[2,1]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -596,24 +596,26 @@ var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
 case 0:/* skip whitespace */
 break;
-case 1: return 10;
+case 1: return 14;
 break;
-case 2: return 12;
+case 2: return 11;
 break;
 case 3: return 5;
 break;
 case 4: return 9;
 break;
-case 5: return 8;
+case 5: return 13;
 break;
-case 6: return 13;
+case 6: return 8;
 break;
-case 7: return 6;
+case 7: return 12;
+break;
+case 8: return 6;
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:\+)/,/^(?:;)/,/^(?:=)/,/^(?:[a-zA-Z]+)/,/^(?:\*)/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:\+)/,/^(?:;)/,/^(?:=)/,/^(?:\^)/,/^(?:[a-zA-Z]+)/,/^(?:\*)/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8],"inclusive":true}}
 });
 return lexer;
 })();

@@ -6,6 +6,7 @@
 '+'             { return 'plus';}
 ';'             { return 'end';}
 '='             { return 'assign';}
+'^'             { return 'power';}
 [a-zA-Z]+       { return 'string';}
 '*'             { return 'into';}
 <<EOF>>         { return 'EOF';}
@@ -16,6 +17,7 @@
 %left 'into'
 %right 'into'
 %right 'assign'
+%left 'power'
 
 %{  
     var path = require("path");
@@ -27,18 +29,18 @@
 %%
 
 expression 
-    :  final_result end EOF {return $$;}
-    |  final_result EOF {return $$;}
+    :  final_result end EOF {console.log($$.evaluate());return $$;}
+    |  final_result EOF {console.log($$.evaluate());return $$;}
     ;
 
 assignment 
-    : string assign number end {
-        $$ = node.createNumberNode($3);
-        memory.createVarNode($1, $$);
+    : string assign e end {
+        $$ = $3;
+        memory.createVarNode($1, $3);
     }
-    | assignment string assign number end {
-        $$ = node.createNumberNode($4);
-        memory.createVarNode($2, $$);
+    | assignment string assign e end {
+        $$ = $4;
+        memory.createVarNode($2, $4);
     }
     ;
 
@@ -55,6 +57,10 @@ e
         $$ = new Tree(operator, $1, $3);
     }
     | e into e {
+        operator = node.createOperatorNode($2);
+        $$ = new Tree(operator, $1, $3);
+    }
+    | e power e {
         operator = node.createOperatorNode($2);
         $$ = new Tree(operator, $1, $3);
     }
