@@ -33,20 +33,18 @@ expression
 
 assignment 
     : string assign number end {
-        numberNode = node.createNumberNode($3);
-        memory.createVarNode($1, numberNode);
-        $$ = numberNode;
+        $$ = node.createNumberNode($3);
+        memory.createVarNode($1, $$);
     }
     | assignment string assign number end {
-        numberNode = node.createNumberNode($4);
-        memory.createVarNode($2, numberNode);
-        $$ = numberNode;
+        $$ = node.createNumberNode($4);
+        memory.createVarNode($2, $$);
     }
     ;
 
 
 final_result 
-    :  assignment { $$ = $1;}
+    :  assignment
     |  assignment e end { $$ = $2;}
     |  e
     ;

@@ -83,16 +83,13 @@ performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* actio
 
 var $0 = $$.length - 1;
 switch (yystate) {
-case 1:
-console.log(this.$);return this.$;
-break;
-case 2:
-console.log(this.$.evaluate());return this.$;
+case 1: case 2:
+return this.$;
 break;
 case 3: case 4:
 
-        numberNode = node.createNumberNode($$[$0-1]);
-        memory.createVarNode($$[$0-3], numberNode);
+        this.$ = node.createNumberNode($$[$0-1]);
+        memory.createVarNode($$[$0-3], this.$);
     
 break;
 case 6:
