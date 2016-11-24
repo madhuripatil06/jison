@@ -7,12 +7,12 @@ var assert = require('assert');
 describe('jison tests', function() {
 	describe('evaluate function for tree', function() {
 		it('should return three 1+2', function() {
-			var tree = jison.parse("1+2;");
+			var tree = jison.parse("1+2;")[0];
 			assert.equal(3, tree.evaluate());
 		});
 
 		it('should return six 1+2+3', function() {
-			var tree = jison.parse("1+2+3;");
+			var tree = jison.parse("1+2+3;")[0];
 			assert.equal(6, tree.evaluate());
 		});
 	});

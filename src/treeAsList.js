@@ -20,7 +20,7 @@ var convertTreeToList = function(tree){
 
 var wrap = function(exp){
 	var tree = jison.parse(exp);
-	return convertTreeToList(tree);
+	return convertTreeToList(tree[0]);
 }
 
 module.exports = wrap;

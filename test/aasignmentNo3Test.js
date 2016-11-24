@@ -40,7 +40,8 @@ describe('Assignment No. 3 tests', function() {
 
 		it('should return value for expression with complex exp tree', function() {
 			var result = evaluator("x=2;y=x;x=8;x+y;");
-			assert.equal(10, result)
+			assert.equal(16, result)
 		});
+
 	});
 });
