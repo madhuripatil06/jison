@@ -72,45 +72,45 @@
   }
 */
 var common = (function(){
-var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,6],$V1=[5,6],$V2=[1,11],$V3=[1,12],$V4=[1,13],$V5=[5,6,11,12,13],$V6=[2,12],$V7=[1,19],$V8=[5,6,11],$V9=[5,6,8,14];
+var o=function(k,v,o,l){for(o=o||{},l=k.length;l--;o[k[l]]=v);return o},$V0=[1,6],$V1=[1,10],$V2=[1,11],$V3=[1,12],$V4=[1,13],$V5=[1,14],$V6=[5,11,12,13,14,15],$V7=[2,13],$V8=[1,19],$V9=[5,8,16];
 var parser = {trace: function trace() { },
 yy: {},
-symbols_: {"error":2,"expression":3,"final_result":4,"end":5,"EOF":6,"assignment":7,"string":8,"assign":9,"e":10,"plus":11,"into":12,"power":13,"number":14,"$accept":0,"$end":1},
-terminals_: {2:"error",5:"end",6:"EOF",8:"string",9:"assign",11:"plus",12:"into",13:"power",14:"number"},
-productions_: [0,[3,3],[3,2],[7,4],[7,5],[4,1],[4,3],[4,1],[10,3],[10,3],[10,3],[10,1],[10,1]],
+symbols_: {"error":2,"expression":3,"final_result":4,"end":5,"EOF":6,"assignment":7,"string":8,"assign":9,"e":10,"plus":11,"into":12,"power":13,"minus":14,"by":15,"number":16,"$accept":0,"$end":1},
+terminals_: {2:"error",5:"end",6:"EOF",8:"string",9:"assign",11:"plus",12:"into",13:"power",14:"minus",15:"by",16:"number"},
+productions_: [0,[3,3],[7,4],[7,5],[4,1],[4,2],[4,1],[10,3],[10,3],[10,3],[10,3],[10,3],[10,1],[10,1]],
 performAction: function anonymous(yytext, yyleng, yylineno, yy, yystate /* action[1] */, $$ /* vstack */, _$ /* lstack */) {
 /* this == yyval */
 
 var $0 = $$.length - 1;
 switch (yystate) {
-case 1: case 2:
-console.log(this.$);return this.$;
+case 1:
+return this.$;
 break;
-case 3: case 4:
+case 2: case 3:
 
         this.$ = $$[$0-1];
         memory.createVarNode($$[$0-3], $$[$0-1]);
     
 break;
-case 6:
- this.$ = $$[$0-1];
+case 5:
+ this.$ = $$[$0];
 break;
-case 8: case 9: case 10:
+case 7: case 8: case 9: case 10: case 11:
 
         operator = node.createOperatorNode($$[$0-1]);
         this.$ = new Tree(operator, $$[$0-2], $$[$0]);
     
 break;
-case 11:
+case 12:
 this.$ = node.createNumberNode($$[$0]);
 break;
-case 12:
+case 13:
 this.$ = memory.getVarNode($$[$0]);
 break;
 }
 },
-table: [{3:1,4:2,7:3,8:[1,5],10:4,14:$V0},{1:[3]},{5:[1,7],6:[1,8]},o($V1,[2,5],{10:9,8:[1,10],14:$V0}),o($V1,[2,7],{11:$V2,12:$V3,13:$V4}),o($V5,$V6,{9:[1,14]}),o($V5,[2,11]),{6:[1,15]},{1:[2,2]},{5:[1,16],11:$V2,12:$V3,13:$V4},o([5,11,12,13],$V6,{9:[1,17]}),{8:$V7,10:18,14:$V0},{8:$V7,10:20,14:$V0},{8:$V7,10:21,14:$V0},{8:$V7,10:22,14:$V0},{1:[2,1]},o($V1,[2,6]),{8:$V7,10:23,14:$V0},o($V8,[2,8],{12:$V3,13:$V4}),o($V5,$V6),o($V8,[2,9],{12:$V3,13:$V4}),o($V5,[2,10]),{5:[1,24],11:$V2,12:$V3,13:$V4},{5:[1,25],11:$V2,12:$V3,13:$V4},o($V9,[2,3]),o($V9,[2,4])],
-defaultActions: {8:[2,2],15:[2,1]},
+table: [{3:1,4:2,7:3,8:[1,5],10:4,16:$V0},{1:[3]},{5:[1,7]},{5:[2,4],8:[1,9],10:8,16:$V0},{5:[2,6],11:$V1,12:$V2,13:$V3,14:$V4,15:$V5},o($V6,$V7,{9:[1,15]}),o($V6,[2,12]),{6:[1,16]},{5:[2,5],11:$V1,12:$V2,13:$V3,14:$V4,15:$V5},o($V6,$V7,{9:[1,17]}),{8:$V8,10:18,16:$V0},{8:$V8,10:20,16:$V0},{8:$V8,10:21,16:$V0},{8:$V8,10:22,16:$V0},{8:$V8,10:23,16:$V0},{8:$V8,10:24,16:$V0},{1:[2,1]},{8:$V8,10:25,16:$V0},o([5,11],[2,7],{12:$V2,13:$V3,14:$V4,15:$V5}),o($V6,$V7),o([5,11,12,14],[2,8],{13:$V3,15:$V5}),o($V6,[2,9]),o([5,11,14],[2,10],{12:$V2,13:$V3,15:$V5}),o([5,11,12,14,15],[2,11],{13:$V3}),{5:[1,26],11:$V1,12:$V2,13:$V3,14:$V4,15:$V5},{5:[1,27],11:$V1,12:$V2,13:$V3,14:$V4,15:$V5},o($V9,[2,2]),o($V9,[2,3])],
+defaultActions: {16:[2,1]},
 parseError: function parseError(str, hash) {
     if (hash.recoverable) {
         this.trace(str);
@@ -596,26 +596,30 @@ var YYSTATE=YY_START;
 switch($avoiding_name_collisions) {
 case 0:/* skip whitespace */
 break;
-case 1: return 14;
+case 1: return 16;
 break;
 case 2: return 11;
 break;
-case 3: return 5;
+case 3: return 14;
 break;
-case 4: return 9;
+case 4: return 5;
 break;
-case 5: return 13;
+case 5: return 9;
 break;
-case 6: return 8;
+case 6: return 13;
 break;
-case 7: return 12;
+case 7: return 8;
 break;
-case 8: return 6;
+case 8: return 12;
+break;
+case 9: return 15;
+break;
+case 10: return 6;
 break;
 }
 },
-rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:\+)/,/^(?:;)/,/^(?:=)/,/^(?:\^)/,/^(?:[a-zA-Z]+)/,/^(?:\*)/,/^(?:$)/],
-conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8],"inclusive":true}}
+rules: [/^(?:\s+)/,/^(?:[0-9]+)/,/^(?:\+)/,/^(?:-)/,/^(?:;)/,/^(?:=)/,/^(?:\^)/,/^(?:[a-zA-Z]+)/,/^(?:\*)/,/^(?:\/)/,/^(?:$)/],
+conditions: {"INITIAL":{"rules":[0,1,2,3,4,5,6,7,8,9,10],"inclusive":true}}
 });
 return lexer;
 })();

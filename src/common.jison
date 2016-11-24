@@ -13,7 +13,7 @@
 '/'             { return 'by';}
 <<EOF>>         { return 'EOF';}
 
-/lex
+\/lex
 
 %left 'plus'
 %left 'minus'
@@ -32,8 +32,7 @@
 %%
 
 expression 
-    :  final_result end EOF {return $$;}
-    |  final_result EOF {return $$;}
+    :  final_result EOF {return $$;}
     ;
 
 assignment 
@@ -51,7 +50,7 @@ assignment
 final_result 
     :  assignment
     |  assignment e end { $$ = $2;}
-    |  e
+    |  e end
     ;
 
 e 
