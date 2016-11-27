@@ -26,6 +26,9 @@ node.createNumberNode = function(number){
 		value : Number(number),
 		evaluate : function(){
 			return this.value;
+		},
+		toJs: function(){
+			return this.value;
 		}
 	}
 };
@@ -39,6 +42,9 @@ node.createAssignNode = function(name, node){
 		name : name,
 		evaluate : function(symbolTable){
 			return symbolTable[this.name] = this.value;
+		},
+		toJs : function(){
+			return "var "+ this.name+ '='+ this.value.evaluate()+";";
 		}
 	}	
 };
@@ -47,7 +53,10 @@ node.createOperatorNode = function(sign){
 	return {
 		type : "Operator",
 		value : sign,
-		evaluate : operations[sign]
+		evaluate : operations[sign],
+		toJs: function(){
+			return this.value;
+		}
 	}
 };
 

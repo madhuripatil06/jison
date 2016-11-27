@@ -18,6 +18,8 @@ var evaluateTree = function(parentNode, firstLeave, secondLeave, symbolTable){
 };
 
 
+
+
 function Tree(parentNode, firstLeave, secondLeave){
 	this.parentNode = parentNode;
 	this.firstLeave = firstLeave;
@@ -25,6 +27,22 @@ function Tree(parentNode, firstLeave, secondLeave){
 	this.evaluate = function(symbolTable){
 		return evaluateTree(parentNode, firstLeave, secondLeave, symbolTable);
 	};
+	this.toJs = function(){
+		var result = "";
+		if(!firstLeave.toJs)
+			result += firstLeave;
+		else
+			result += firstLeave.toJs();
+		if(!parentNode.toJs)
+			result += parentNode;
+		else
+			result += parentNode.toJs();
+		if(!secondLeave.toJs)
+			result += secondLeave;
+		else
+			result += secondLeave.toJs();
+		return result;
+	}
 };
 
 

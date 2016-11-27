@@ -49,25 +49,18 @@ assig
        $$ = new UnaryTree(n);
     };
 
+operators
+    : plus { $$ = $1;}
+    | minus
+    | into
+    | by
+    ;
 e 
-    : e plus e {
-        operator = node.createOperatorNode($2);
-        $$ = new Tree(operator, $1, $3);
-    }
-    | e into e {
+    : e operators e {
         operator = node.createOperatorNode($2);
         $$ = new Tree(operator, $1, $3);
     }
     | e power e {
-        operator = node.createOperatorNode($2);
-        $$ = new Tree(operator, $1, $3);
-    }
-    | e minus e {
-        operator = node.createOperatorNode($2);
-        $$ = new Tree(operator, $1, $3);
-    }
-
-    | e by e {
         operator = node.createOperatorNode($2);
         $$ = new Tree(operator, $1, $3);
     }

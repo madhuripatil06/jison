@@ -3,7 +3,7 @@ var treeAsList = require(path.resolve("./src/treeAsList.js"));
 var numtoWords = require(path.resolve("./libraries/numberToWords.js"));
 var paren = require(path.resolve("./libraries/parenthesis.js"));
 
-operatorsInWords = {"+": 'plus', "*": "times", "/": "by", "-", "minus"}
+operatorsInWords = {"+": 'plus', "*": "times", "/": "by", "-": "minus"}
 
 var represent = function(input){
 	var result = [];
