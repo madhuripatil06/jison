@@ -1,5 +1,5 @@
 var path = require("path");
-var representation = require(path.resolve("./src/assignmentNo2.js"));
+var representation = require(path.resolve("./src/representInWords.js"));
 var assert = require('assert');
 
 describe('Assignment No. 2 tests', function() {

@@ -1,5 +1,5 @@
 var path = require("path");
-var evaluator = require(path.resolve("./src/assignmentNo3.js"));
+var evaluator = require(path.resolve("./src/treeEvaluator.js"));
 var assert = require('assert');
 
 describe('Assignment No. 3 tests', function() {
